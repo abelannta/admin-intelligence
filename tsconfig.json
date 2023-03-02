@@ -1,5 +1,19 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+        "@/public/*" : ["public/*"],
+        "@/pages/*" : ["src/pages/*"],
+        "@/components/*" : ["src/components/*"],
+        "@/data/*" : ["src/data/*"],
+        "@/constants/*" : ["src/constants/*"],
+        "@/modules/*" : ["src/modules/*"],
+        "@/lib/*" : ["src/lib/*"],
+        "@/store/*" : ["src/store/*"],
+        "@/utils/*" : ["src/utils/*"],
+        "@/styles/*" : ["src/styles/*"],
+        "@/types/*" : ["src/types/*"],
+    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -13,11 +27,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/modules/components/ResizableBox.js"],
   "exclude": ["node_modules"]
 }
