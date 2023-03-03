@@ -6,7 +6,7 @@ interface TableProps {
   data: any;
 }
 
-const TablePeserta = (props: TableProps) => {
+const TablePesertaTryout = (props: TableProps) => {
   const { loading, data } = props;
   return (
     <>
@@ -74,4 +74,4 @@ const TablePeserta = (props: TableProps) => {
   );
 };
 
-export default TablePeserta;
+export default TablePesertaTryout;

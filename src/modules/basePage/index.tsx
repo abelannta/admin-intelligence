@@ -31,7 +31,7 @@ const AdminBasePage = ({
 }: BasePageProps) => {
   return (
     <>
-      <div className="h-screen flex flex-col bg-primary-50 bg-stone-100">
+      <div className="min-h-screen flex flex-col bg-primary-50 bg-stone-100">
         {/* navbar */}
         <div className="z-10 fixed w-full">
           <NavigationBarAdmin />

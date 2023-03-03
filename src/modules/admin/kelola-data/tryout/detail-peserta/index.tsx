@@ -1,7 +1,7 @@
 import AdminBasePage from "@/modules/basePage";
 import { SIDEBAR_LINK } from "@/modules/components/menuAdmin";
 import { useState } from "react";
-import TablePengguna from "./components/tablePengguna";
+import TablePelapor from "./components/tablePeserta";
 
 const data = [
   {
@@ -51,16 +51,16 @@ const data = [
   },
 ];
 
-export const DataPersertaAdmin = () => {
+export const DataPesertaTryout = () => {
   const [loading, setLoading] = useState(false);
 
   return (
     <AdminBasePage>
       <div className="bg-white py-10 shadow-lg rounded-lg divide-y overflow-hidden">
         <div className="px-5">
-          <h1 className="font-bold text-xl mb-10">Kelola Akun</h1>
+          <h1 className="font-bold text-xl mb-10">Data Peserta Tryout 1</h1>
         </div>
-        <TablePengguna data={data} loading={loading} />
+        <TablePelapor data={data} loading={loading} />
       </div>
     </AdminBasePage>
   );
