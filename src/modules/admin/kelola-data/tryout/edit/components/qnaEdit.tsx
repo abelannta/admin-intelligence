@@ -59,6 +59,15 @@ export const QnAEditTryout = () => {
     });
   };
 
+  const storingCorrectAnswer = (questionIndex: number, value: string) => {
+    setContent((prev) => {
+      const newArr = prev.slice();
+      newArr[questionIndex].correctAns = value;
+
+      return newArr;
+    });
+  };
+
   useEffect(() => {
     console.log(content);
   }, [content]);
@@ -74,6 +83,8 @@ export const QnAEditTryout = () => {
           storingAnswer={storingAnswer}
           questionValue={item.question}
           answersValue={item.answers}
+          correctAns={item.correctAns}
+          storingCorrectAnswer={storingCorrectAnswer}
         />
       ))}
       <button
@@ -92,8 +103,10 @@ interface QnAFieldProps {
   deleteQuestion: (e: any, index: number) => void;
   storingQuestion: (i: number, value: string) => void;
   storingAnswer: (questionIndex: number, i: number, value: string) => void;
+  storingCorrectAnswer: (questionIndex: number, value: string) => void;
   questionValue: string;
   answersValue: string[];
+  correctAns: string;
 }
 
 const QnAField = (props: QnAFieldProps) => {
@@ -102,8 +115,10 @@ const QnAField = (props: QnAFieldProps) => {
     deleteQuestion,
     storingQuestion,
     storingAnswer,
+    storingCorrectAnswer,
     questionValue,
     answersValue,
+    correctAns,
   } = props;
 
   return (
@@ -148,6 +163,8 @@ const QnAField = (props: QnAFieldProps) => {
                 key={i}
                 answerValue={item}
                 storingAnswer={storingAnswer}
+                storingCorrectAnswer={storingCorrectAnswer}
+                correctAns={correctAns}
               />
             ))}
           </div>
@@ -161,11 +178,20 @@ interface InputJawabanProps {
   questionIndex: number;
   index: number;
   answerValue: string;
+  correctAns: string;
   storingAnswer: (questionIndex: number, i: number, value: string) => void;
+  storingCorrectAnswer: (questionIndex: number, value: string) => void;
 }
 
 const InputJawaban = (props: InputJawabanProps) => {
-  const { questionIndex, index, answerValue, storingAnswer } = props;
+  const {
+    questionIndex,
+    index,
+    answerValue,
+    storingAnswer,
+    correctAns,
+    storingCorrectAnswer,
+  } = props;
 
   return (
     <>
@@ -189,6 +215,13 @@ const InputJawaban = (props: InputJawabanProps) => {
           onChange={(e) => storingAnswer(questionIndex, index, e.target.value)}
           placeholder="Type here"
           className="input input-bordered w-full"
+        />
+        <input
+          onChange={(e) => storingCorrectAnswer(questionIndex, e.target.value)}
+          value={answerValue}
+          checked={correctAns === answerValue}
+          type="checkbox"
+          className="checkbox ml-3"
         />
       </div>
     </>
