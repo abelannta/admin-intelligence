@@ -2,11 +2,13 @@ import { ReactNode, useState } from "react";
 import ListItemComponent from "@/modules/components/listItem";
 import NavigationBarAdmin from "@/modules/components/navbarAdmin";
 import { SIDEBAR_LINK } from "@/modules/components/menuAdmin";
+import Head from "next/head";
 
 interface BasePageProps {
   children?: ReactNode;
   menuDropdown?: any;
   menuBottom?: any;
+  title?: string;
 }
 
 export interface SideBarData {
@@ -28,9 +30,13 @@ const AdminBasePage = ({
   children,
   menuDropdown,
   menuBottom,
+  title,
 }: BasePageProps) => {
   return (
     <>
+      <Head>
+        <title>{title} | NineIntelligence</title>
+      </Head>
       <div className="min-h-screen flex flex-col bg-primary-50 bg-stone-100">
         {/* navbar */}
         <div className="z-10 fixed w-full">

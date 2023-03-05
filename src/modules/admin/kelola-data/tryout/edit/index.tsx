@@ -7,7 +7,7 @@ import { QnAEditTryout } from "./components/qnaEdit";
 export const EditDetailTryout = () => {
   return (
     <>
-      <AdminBasePage>
+      <AdminBasePage title="Kelola Data Tryout | Edit Tryout">
         <h1 className="font-bold text-xl mb-10">Edit Tryout 1</h1>
         <form>
           <DetailEditSectionOne />

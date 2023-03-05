@@ -5,7 +5,7 @@ import { FaPlus } from "react-icons/fa";
 export const KelolaDataTryout = () => {
   return (
     <>
-      <AdminBasePage>
+      <AdminBasePage title="Kelola Data Tryout">
         <div className="py-10 px-5">
           <h1 className="font-bold text-xl mb-10">Kelola Data Tryout</h1>
           <div className="flex flex-col gap-5 mb-10">

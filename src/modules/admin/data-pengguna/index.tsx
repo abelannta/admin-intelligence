@@ -55,7 +55,7 @@ export const DataPersertaAdmin = () => {
   const [loading, setLoading] = useState(false);
 
   return (
-    <AdminBasePage>
+    <AdminBasePage title="Data Pengguna">
       <div className="bg-white py-10 shadow-lg rounded-lg divide-y overflow-hidden">
         <div className="px-5">
           <h1 className="font-bold text-xl mb-10">Kelola Akun</h1>

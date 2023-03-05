@@ -214,6 +214,7 @@ const InputJawaban = (props: InputJawabanProps) => {
           value={answerValue}
           onChange={(e) => storingAnswer(questionIndex, index, e.target.value)}
           placeholder="Type here"
+          required
           className="input input-bordered w-full"
         />
         <input
