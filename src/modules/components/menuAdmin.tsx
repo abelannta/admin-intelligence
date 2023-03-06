@@ -32,7 +32,7 @@ export const SIDEBAR_LINK = [
       },
       {
         title: "Data Materi",
-        url: "/admin/kelola-data/mmteri",
+        url: "/admin/kelola-data/materi",
       },
     ],
   },

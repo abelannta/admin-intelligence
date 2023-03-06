@@ -35,7 +35,7 @@ const AdminBasePage = ({
   return (
     <>
       <Head>
-        <title>{title} | NineIntelligence</title>
+        <title>{`${title} | NineIntelligence`}</title>
       </Head>
       <div className="min-h-screen flex flex-col bg-primary-50 bg-stone-100">
         {/* navbar */}

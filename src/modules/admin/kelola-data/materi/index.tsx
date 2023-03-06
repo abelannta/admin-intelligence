@@ -2,16 +2,16 @@ import AdminBasePage from "@/modules/basePage";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa";
 
-export const KelolaDataBankSoal = () => {
+export const KelolaDataMateri = () => {
   return (
     <>
-      <AdminBasePage title="Kelola Data Bank Soal">
+      <AdminBasePage title="Kelola Data Materi">
         <div className="py-10 px-5">
-          <h1 className="font-bold text-xl mb-10">Kelola Data Bank Soal</h1>
+          <h1 className="font-bold text-xl mb-10">Kelola Data Materi</h1>
           <div className="flex flex-col gap-5 mb-10">
-            <BankSoalComponent />
-            <BankSoalComponent />
-            <BankSoalComponent />
+            <MateriComponent />
+            <MateriComponent />
+            <MateriComponent />
           </div>
           <button className="btn bg-white text-black hover:bg-slate-300 border-none">
             <FaPlus className="w-3 h-3 mr-3" />
@@ -23,7 +23,7 @@ export const KelolaDataBankSoal = () => {
   );
 };
 
-const BankSoalComponent = () => {
+const MateriComponent = () => {
   return (
     <div className="bg-white rounded-xl p-5">
       <div className="flex justify-between items-center">
@@ -32,7 +32,7 @@ const BankSoalComponent = () => {
             1
           </div>
           <div className="flex flex-col">
-            <div className="text-base md:text-lg font-bold">Bank Soal 1</div>
+            <div className="text-base md:text-lg font-bold">Biologi</div>
           </div>
         </div>
         <div className="dropdown dropdown-end">
@@ -44,13 +44,10 @@ const BankSoalComponent = () => {
             className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Edit</a>
+              <a>Detail Materi</a>
             </li>
             <li>
               <a>Sembunyikan</a>
-            </li>
-            <li>
-              <a>Pembahasan</a>
             </li>
             <li>
               <a>Hapus</a>
