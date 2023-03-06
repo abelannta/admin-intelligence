@@ -68,6 +68,7 @@ export const EditSubMateri = () => {
         {formData.map((item, i) => (
           <EditSubMateriSection
             index={i}
+            key={i}
             deleteSlide={deleteSlide}
             storingTitle={storingTitle}
             storingContent={storingContent}
