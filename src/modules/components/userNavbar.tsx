@@ -3,10 +3,12 @@ import { parseCookies, destroyCookie } from "nookies";
 import { useRouter } from "next/router";
 import fotoProfil from "@/public/assets/pepe.webp";
 import Link from "next/link";
+import { useGlobalContext } from "src/contexts";
 
 const UserNavbar = () => {
   const cookies = parseCookies();
   const router = useRouter();
+  const { user } = useGlobalContext();
 
   const handleLogout = () => {
     destroyCookie(null, "accessToken");
@@ -22,7 +24,7 @@ const UserNavbar = () => {
             className="flex items-center cursor-pointer btn btn-ghost capitalize"
           >
             <div className="hidden md:block">
-              <p className="text-base text-black">Abel Ananta</p>
+              <p className="text-base text-black">{user.user_name}</p>
             </div>
             <div className="rounded-full w-10 h-10 m-0 md:ml-3 overflow-hidden">
               <Image src={fotoProfil} />
