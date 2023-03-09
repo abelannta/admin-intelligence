@@ -1,7 +1,9 @@
 import { RxCalendar, RxClock } from "react-icons/rx";
 import { TbEdit } from "react-icons/tb";
 
-export const DetailEditSectionOne = () => {
+export const DetailEditSectionOne = (props: any) => {
+  const { id } = props;
+
   return (
     <div className="bg-white rounded-xl p-5">
       <div>

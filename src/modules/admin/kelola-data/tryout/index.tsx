@@ -193,50 +193,61 @@ const TryoutComponent = (props: any) => {
 
   return (
     <>
-      <Link href={`/admin/kelola-data/tryout/${item?.to_slug}`} legacyBehavior>
-        <div className="bg-white rounded-xl p-5">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center">
-              <div className="flex items-center justify-center rounded-full w-10 h-10 bg-background text-bold font-bold mr-5 aspect-square">
-                {index + 1}
+      <div className="bg-white rounded-xl p-5">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center">
+            <div className="flex items-center justify-center rounded-full w-10 h-10 bg-background text-bold font-bold mr-5 aspect-square">
+              {index + 1}
+            </div>
+            <div className="flex flex-col">
+              <div className="text-base md:text-lg font-bold">
+                {item?.to_title}
               </div>
-              <div className="flex flex-col">
-                <div className="text-base md:text-lg font-bold">
-                  {item?.to_title}
-                </div>
-                <div className="text-gray-600">
-                  <Moment format="dddd, D MMMM YYYY">{item?.startsAt}</Moment>
-                </div>
+              <div className="text-gray-600">
+                <Moment format="dddd, D MMMM YYYY">{item?.startsAt}</Moment>
               </div>
             </div>
-            <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-ghost m-1">
-                <BiDotsVerticalRounded className="w-5 h-5" />
-              </label>
-              <ul
-                tabIndex={0}
-                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+          </div>
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost m-1">
+              <BiDotsVerticalRounded className="w-5 h-5" />
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <Link
+                href={`/admin/kelola-data/tryout/${item?.to_slug}`}
+                legacyBehavior
               >
                 <li>
-                  <a>Detail Peserta</a>
+                  <a>Detail Tryout</a>
                 </li>
+              </Link>
+              <li>
+                <a>Detail Peserta</a>
+              </li>
+              <Link
+                href={`/admin/kelola-data/tryout/${item?.to_slug}/edit`}
+                legacyBehavior
+              >
                 <li>
                   <a>Edit</a>
                 </li>
-                <li>
-                  <a>Sembunyikan</a>
-                </li>
-                <li>
-                  <a>Pembahasan</a>
-                </li>
-                <li>
-                  <a>Hapus</a>
-                </li>
-              </ul>
-            </div>
+              </Link>
+              <li>
+                <a>Sembunyikan</a>
+              </li>
+              <li>
+                <a>Pembahasan</a>
+              </li>
+              <li>
+                <a>Hapus</a>
+              </li>
+            </ul>
           </div>
         </div>
-      </Link>
+      </div>
     </>
   );
 };

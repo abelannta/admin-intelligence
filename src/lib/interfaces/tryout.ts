@@ -5,3 +5,11 @@ export interface TryoutDetail {
   to_summary: string;
   to_title: string;
 }
+
+export interface PostContentTryoutDetail {
+  type: number;
+  mapel: number;
+  content: string;
+  answers: string[];
+  correctAns: string;
+}

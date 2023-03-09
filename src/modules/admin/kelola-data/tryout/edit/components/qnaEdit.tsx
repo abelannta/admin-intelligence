@@ -2,27 +2,18 @@ import { NumberRounded } from "@/modules/components/number";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 
-export const QnAEditTryout = () => {
-  const [formData, setFormData] = useState({
-    id_to: "",
-    start_date: "",
-    name_to: "",
-  });
-  const [content, setContent] = useState([
-    {
-      question: "",
-      answers: ["", "", "", "", ""],
-      correctAns: "",
-    },
-  ]);
+export const QnAEditTryout = (props: any) => {
+  const { content, setContent } = props;
 
   const addQuestion = (e: any) => {
     e.preventDefault();
-    setContent((prev) => {
+    setContent((prev: any) => {
       return [
         ...prev,
         {
-          question: "",
+          type: 0,
+          mapel: 0,
+          content: "",
           answers: ["", "", "", "", ""],
           correctAns: "",
         },
@@ -38,9 +29,9 @@ export const QnAEditTryout = () => {
   };
 
   const storingQuestion = (index: number, value: string) => {
-    setContent((prev) => {
+    setContent((prev: any) => {
       const newArr = prev.slice();
-      newArr[index].question = value;
+      newArr[index].content = value;
 
       return newArr;
     });
@@ -51,7 +42,7 @@ export const QnAEditTryout = () => {
     index: number,
     value: string
   ) => {
-    setContent((prev) => {
+    setContent((prev: any) => {
       const newArr = prev.slice();
       newArr[questionIndex].answers[index] = value;
 
@@ -60,7 +51,7 @@ export const QnAEditTryout = () => {
   };
 
   const storingCorrectAnswer = (questionIndex: number, value: string) => {
-    setContent((prev) => {
+    setContent((prev: any) => {
       const newArr = prev.slice();
       newArr[questionIndex].correctAns = value;
 
@@ -74,14 +65,14 @@ export const QnAEditTryout = () => {
 
   return (
     <>
-      {content.map((item, i) => (
+      {content.map((item: any, i: number) => (
         <QnAField
           index={i}
           key={i}
           deleteQuestion={deleteQuestion}
           storingQuestion={storingQuestion}
           storingAnswer={storingAnswer}
-          questionValue={item.question}
+          questionValue={item.content}
           answersValue={item.answers}
           correctAns={item.correctAns}
           storingCorrectAnswer={storingCorrectAnswer}

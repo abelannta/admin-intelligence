@@ -1,6 +1,7 @@
 import axios from "axios";
 import slugify from "react-slugify";
-import { GET_TRYOUT, POST_CREATE_TRYOUT } from "../urlApi";
+import { PostContentTryoutDetail } from "../interfaces/tryout";
+import { GET_TRYOUT, POST_CREATE_TRYOUT, POST_TRYOUT } from "../urlApi";
 
 export const getTryout = async () => {
   const res = await axios.get(GET_TRYOUT);
@@ -30,6 +31,23 @@ export const postCreateTryout = async (
       startsAt: startAt,
       endsAt: endAt,
     },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return res.data;
+};
+
+export const postContentTryout = async (
+  idTryout: string,
+  data: PostContentTryoutDetail
+) => {
+  const res = await axios.post(
+    POST_TRYOUT + idTryout + "/soal",
+    { data },
     {
       headers: {
         "Content-Type": "application/json",
