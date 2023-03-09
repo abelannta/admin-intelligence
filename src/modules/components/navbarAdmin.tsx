@@ -1,6 +1,10 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { TbStack2 } from "react-icons/tb";
-import UserNavbar from "./userNavbar";
+
+const UserNav = dynamic(() => import("@/modules/components/userNavbar"), {
+  ssr: false,
+});
 
 const NavigationBarAdmin = () => {
   return (
@@ -18,7 +22,7 @@ const NavigationBarAdmin = () => {
             </div>
           </Link>
           <div className="flex z-50 items-center ">
-            <UserNavbar />
+            <UserNav />
           </div>
         </div>
       </nav>

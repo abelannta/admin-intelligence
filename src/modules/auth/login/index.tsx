@@ -2,12 +2,10 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { getToken, getProfile } from "@/lib/auth";
 import { setCookie } from "nookies";
-import { useGlobalContext } from "src/contexts";
 import toast from "react-hot-toast";
 
 export const LoginPage = () => {
   const router = useRouter();
-  const { setUser } = useGlobalContext();
   const [loginData, setLoginData] = useState({
     username: "",
     password: "",
@@ -24,7 +22,11 @@ export const LoginPage = () => {
         const setUserProfile = async () => {
           await getProfile(res.token)
             .then((res) => {
-              setUser(res);
+              setCookie(null, "userData", JSON.stringify(res), {
+                maxAge: 3600,
+                path: "/",
+                secure: true,
+              });
               router.replace("/admin/dashboard");
             })
             .catch((err) => console.error(err));
