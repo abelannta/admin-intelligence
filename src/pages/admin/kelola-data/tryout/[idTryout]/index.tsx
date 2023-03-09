@@ -5,18 +5,24 @@ import { GetServerSidePropsContext } from "next";
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { idTryout } = context.query;
 
-  const res = await fetch(GET_TRYOUT + idTryout);
-  const data = await res.json();
+  const [detailRes, soalRes] = await Promise.all([
+    fetch(GET_TRYOUT + idTryout),
+    fetch(GET_TRYOUT + idTryout + "/soal/admin"),
+  ]);
+  const [detailTryout, soalTryout] = await Promise.all([
+    detailRes.json(),
+    soalRes.json(),
+  ]);
 
-  if (!data) {
+  if (!detailRes) {
     return {
       notFound: true,
     };
-  } else {
-    return {
-      props: data,
-    };
   }
+
+  return {
+    props: { detailTryout, soalTryout }, // will be passed to the page component as props
+  };
 }
 
 export default DetailTryoutAdmin;

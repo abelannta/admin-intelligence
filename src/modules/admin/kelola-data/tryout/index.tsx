@@ -193,7 +193,7 @@ const TryoutComponent = (props: any) => {
 
   return (
     <>
-      <Link href={item?.to_slug}>
+      <Link href={`/admin/kelola-data/tryout/${item?.to_slug}`} legacyBehavior>
         <div className="bg-white rounded-xl p-5">
           <div className="flex justify-between items-center">
             <div className="flex items-center">

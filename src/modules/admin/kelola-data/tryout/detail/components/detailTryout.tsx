@@ -1,7 +1,11 @@
+import { TryoutDetail } from "@/lib/interfaces/tryout";
 import { RxCalendar, RxClock } from "react-icons/rx";
 import { TbEdit } from "react-icons/tb";
+import moment from "moment";
 
-export const DetailTryoutSectionOne = () => {
+export const DetailTryoutSectionOne = (props: any) => {
+  const { data } = props;
+
   return (
     <div className="bg-white rounded-xl p-5">
       <div>
@@ -20,7 +24,9 @@ export const DetailTryoutSectionOne = () => {
             <div className="text-base font-semibold">Tanggal</div>
           </div>
           <input
-            type="date"
+            type="datetime-local"
+            value={moment(data?.startsAt).format("yyyy-MM-DDThh:mm")}
+            disabled
             placeholder="Type here"
             className="input input-md input-bordered w-full max-w-xs col-span-6"
           />
@@ -46,6 +52,8 @@ export const DetailTryoutSectionOne = () => {
           </div>
           <input
             type="text"
+            value={data?.to_title}
+            disabled
             placeholder="Type here"
             className="input input-md input-bordered w-full max-w-xs col-span-6"
           />

@@ -16,21 +16,24 @@ const contentData = [
   },
 ];
 
-export const DetailQnATryout = () => {
+export const DetailQnATryout = (props: any) => {
+  const { data } = props;
   const [formData, setFormData] = useState({
     id_to: "",
     start_date: "",
     name_to: "",
   });
-  const [content, setContent] = useState(contentData);
+  const [content, setContent] = useState(data);
+
+  console.log(data);
 
   return (
     <>
-      {content.map((item, i) => (
+      {content.map((item: any, i: number) => (
         <QnAField
           index={i}
           key={i}
-          questionValue={item.question}
+          questionValue={item.content}
           answersValue={item.answers}
           correctAns={item.correctAns}
         />
