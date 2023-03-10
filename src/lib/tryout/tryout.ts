@@ -45,15 +45,12 @@ export const postContentTryout = async (
   idTryout: string,
   data: PostContentTryoutDetail
 ) => {
-  const res = await axios.post(
-    POST_TRYOUT + idTryout + "/soal",
-    { data },
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  console.log(data);
+  const res = await axios.post(POST_TRYOUT + idTryout + "/soal", data, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
   return res.data;
 };

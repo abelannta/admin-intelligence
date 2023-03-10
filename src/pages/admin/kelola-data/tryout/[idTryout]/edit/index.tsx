@@ -1,9 +1,11 @@
 import { GET_TRYOUT } from "@/lib/urlApi";
 import { EditDetailTryout } from "@/modules/admin/kelola-data/tryout/edit";
 import { GetServerSidePropsContext } from "next";
+import nookies from "nookies";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { idTryout } = context.query;
+  const cookies = nookies.get(context);
 
   const [detailRes, soalRes] = await Promise.all([
     fetch(GET_TRYOUT + idTryout),
@@ -13,6 +15,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     detailRes.json(),
     soalRes.json(),
   ]);
+
+  if (!cookies.accessToken) {
+    return {
+      redirect: {
+        destination: "/auth/login",
+      },
+    };
+  }
 
   if (!detailRes) {
     return {

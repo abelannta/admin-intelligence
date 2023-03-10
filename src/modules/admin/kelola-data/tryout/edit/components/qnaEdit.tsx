@@ -11,8 +11,8 @@ export const QnAEditTryout = (props: any) => {
       return [
         ...prev,
         {
-          type: 0,
-          mapel: 0,
+          type: 2,
+          mapel: 3,
           content: "",
           answers: ["", "", "", "", ""],
           correctAns: "",
