@@ -1,4 +1,4 @@
-import { getTryout, postCreateTryout } from "@/lib/tryout/tryout";
+import { deleteTryout, getTryout, postCreateTryout } from "@/lib/tryout/tryout";
 import AdminBasePage from "@/modules/basePage";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -6,9 +6,11 @@ import toast from "react-hot-toast";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa";
 import Moment from "react-moment";
+import { ModalHapusTryout } from "./components/modalHapus";
 
 export const KelolaDataTryout = () => {
   const [listTryout, setListTryout] = useState([]);
+  const [selected, setSelected] = useState<string>("");
   const [submit, setSubmit] = useState(false);
   const [formTambah, setFormTambah] = useState({
     to_title: "",
@@ -21,7 +23,6 @@ export const KelolaDataTryout = () => {
     const res = getTryout()
       .then((res) => {
         setListTryout(res);
-        console.log(res);
       })
       .catch((err) => toast.error(err.message));
   };
@@ -62,7 +63,12 @@ export const KelolaDataTryout = () => {
           <h1 className="font-bold text-xl mb-10">Kelola Data Tryout</h1>
           <div className="flex flex-col gap-5 mb-10">
             {listTryout.map((item, i) => (
-              <TryoutComponent item={item} index={i} key={i} />
+              <TryoutComponent
+                item={item}
+                index={i}
+                setSelected={setSelected}
+                key={i}
+              />
             ))}
           </div>
           <label
@@ -184,12 +190,13 @@ export const KelolaDataTryout = () => {
           </div>
         </div>
       </form>
+      <ModalHapusTryout selected={selected} />
     </>
   );
 };
 
 const TryoutComponent = (props: any) => {
-  const { item, index } = props;
+  const { item, setSelected, index } = props;
 
   return (
     <>
@@ -241,9 +248,14 @@ const TryoutComponent = (props: any) => {
               <li>
                 <a>Pembahasan</a>
               </li>
-              <li>
-                <a>Hapus</a>
-              </li>
+              <label
+                onClick={() => setSelected(item?.to_slug)}
+                htmlFor="modal-hapus"
+              >
+                <li>
+                  <a>Hapus</a>
+                </li>
+              </label>
             </ul>
           </div>
         </div>

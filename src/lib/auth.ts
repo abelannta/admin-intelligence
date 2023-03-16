@@ -1,11 +1,6 @@
 import axios from "axios";
 import { GET_PROFILE, POST_AUTH_LOGIN } from "./urlApi";
 
-const headers = {
-  "Access-Control-Allow-Origin": "*",
-  "Content-Type": "application/json",
-};
-
 export const getToken = async (username: string, password: string) => {
   const res = await axios.post(
     POST_AUTH_LOGIN,
