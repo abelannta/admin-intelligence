@@ -12,6 +12,7 @@ export const QnAEditTryout = (props: any) => {
       return [
         ...prev,
         {
+          soal_id: null,
           type: 0,
           mapel: 0,
           content: "",
@@ -24,9 +25,12 @@ export const QnAEditTryout = (props: any) => {
 
   const deleteQuestion = (e: any, index: number) => {
     e.preventDefault();
-    const deletedQuestion = [...content];
-    deletedQuestion.splice(index, 1);
-    setContent(deletedQuestion);
+    setContent((prev: any) => {
+      const newArr = prev.slice();
+      newArr[index].answers = [];
+
+      return newArr;
+    });
   };
 
   const storingQuestion = (index: number, value: string) => {
@@ -84,21 +88,27 @@ export const QnAEditTryout = (props: any) => {
   return (
     <>
       {content.map((item: any, i: number) => (
-        <QnAField
-          index={i}
-          key={i}
-          deleteQuestion={deleteQuestion}
-          storingQuestion={storingQuestion}
-          storingAnswer={storingAnswer}
-          storingType={storingType}
-          storingMapel={storingMapel}
-          typeValue={item.type}
-          mapelValue={item.mapel}
-          questionValue={item.content}
-          answersValue={item.answers}
-          correctAns={item.correctAns}
-          storingCorrectAnswer={storingCorrectAnswer}
-        />
+        <>
+          <div
+            className={`${item.answers.length === 0 ? "hidden" : ""}`}
+            key={i}
+          >
+            <QnAField
+              index={i}
+              deleteQuestion={deleteQuestion}
+              storingQuestion={storingQuestion}
+              storingAnswer={storingAnswer}
+              storingType={storingType}
+              storingMapel={storingMapel}
+              typeValue={item.type}
+              mapelValue={item.mapel}
+              questionValue={item.content}
+              answersValue={item.answers}
+              correctAns={item.correctAns}
+              storingCorrectAnswer={storingCorrectAnswer}
+            />
+          </div>
+        </>
       ))}
       <button
         onClick={(e) => addQuestion(e)}

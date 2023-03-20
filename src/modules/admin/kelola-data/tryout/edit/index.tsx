@@ -26,8 +26,6 @@ export const EditDetailTryout = (props: any) => {
       });
   };
 
-  console.log(detailTryout);
-
   return (
     <>
       <AdminBasePage title="Kelola Data Tryout | Edit Tryout">
