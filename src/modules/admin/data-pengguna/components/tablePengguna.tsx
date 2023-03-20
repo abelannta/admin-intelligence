@@ -33,25 +33,25 @@ const TablePengguna = (props: TableProps) => {
                 <div className="py-4 mx-7 space-x-2 text-xs font-medium text-black">
                   <div className="grid grid-cols-12 gap-4 items-center font-thin text-gray-500">
                     <div className="col-start-1 col-end-2 font-medium text-black">
-                      {user.id}
+                      {idx + 1}
                     </div>
                     <div className="col-start-2 col-end-4 font-medium text-black">
-                      {user.fullname}
+                      {user.user_name}
                     </div>
                     <div className="col-start-4 col-end-6 font-medium text-black">
-                      {user.email}
+                      {user.user_email}
                     </div>
                     <div className="col-start-6 col-end-7 font-thin">
-                      {user.createdAt}
+                      {user.user_name}
                     </div>
                     <div className="col-start-7 col-end-8 font-thin">
-                      {user.createdAt}
+                      {user.user_name}
                     </div>
                     <div className="col-start-8 col-end-10 font-thin">
-                      {user.createdAt}
+                      {user.user_name}
                     </div>
                     <div className="col-start-10 col-end-11 font-thin">
-                      {user.langganan}
+                      {user.user_name}
                     </div>
                     <div className="col-start-11 col-end-12 flex justify-center">
                       <button>

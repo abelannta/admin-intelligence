@@ -2,20 +2,21 @@ import { deleteTryout } from "@/lib/tryout/tryout";
 import { toast } from "react-hot-toast";
 
 interface ModalHapusProps {
+  submit: boolean;
   selected: string;
+  setSubmit: (value: boolean) => void;
 }
 
 export const ModalHapusTryout = (props: ModalHapusProps) => {
-  const { selected } = props;
+  const { selected, submit, setSubmit } = props;
 
   const handleHapusTryout = () => {
     const res = deleteTryout(selected)
       .then((res) => {
-        console.log(res);
+        setSubmit(!submit);
         toast.success("Data Berhasil Dihapus");
       })
       .catch((err) => {
-        console.error(err);
         toast.error("Data gagal dihapus");
       });
   };
@@ -26,19 +27,18 @@ export const ModalHapusTryout = (props: ModalHapusProps) => {
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <h3 className="font-bold text-lg">
-            Congratulations random Internet user!
+            Apakah anda yakin ingin menghapus bank soal?
           </h3>
-          <p className="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
           <div className="modal-action">
+            <label htmlFor="modal-hapus" className="btn">
+              Batal
+            </label>
             <label
               htmlFor="modal-hapus"
-              className="btn"
+              className="btn bg-red-600 border-none"
               onClick={() => handleHapusTryout()}
             >
-              Yay!
+              Hapus
             </label>
           </div>
         </div>

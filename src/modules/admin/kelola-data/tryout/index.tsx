@@ -1,5 +1,6 @@
 import { deleteTryout, getTryout, postCreateTryout } from "@/lib/tryout/tryout";
 import AdminBasePage from "@/modules/basePage";
+import moment from "moment";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
@@ -9,6 +10,7 @@ import Moment from "react-moment";
 import { ModalHapusTryout } from "./components/modalHapus";
 
 export const KelolaDataTryout = () => {
+  const recentDate = moment().format("YYYY-MM-DDThh:mm");
   const [listTryout, setListTryout] = useState([]);
   const [selected, setSelected] = useState<string>("");
   const [submit, setSubmit] = useState(false);
@@ -138,6 +140,7 @@ export const KelolaDataTryout = () => {
                 type="datetime-local"
                 placeholder="Type here"
                 value={formTambah.startsAt}
+                min={recentDate}
                 onChange={(e) =>
                   setFormTambah((prev) => ({
                     ...prev,
@@ -156,6 +159,7 @@ export const KelolaDataTryout = () => {
                 type="datetime-local"
                 placeholder="Type here"
                 value={formTambah.endsAt}
+                min={formTambah.startsAt ? formTambah.startsAt : recentDate}
                 onChange={(e) =>
                   setFormTambah((prev) => ({
                     ...prev,
@@ -190,7 +194,11 @@ export const KelolaDataTryout = () => {
           </div>
         </div>
       </form>
-      <ModalHapusTryout selected={selected} />
+      <ModalHapusTryout
+        selected={selected}
+        setSubmit={setSubmit}
+        submit={submit}
+      />
     </>
   );
 };

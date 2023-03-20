@@ -1,6 +1,8 @@
+import { getUsers } from "@/lib/users";
 import AdminBasePage from "@/modules/basePage";
 import { SIDEBAR_LINK } from "@/modules/components/menuAdmin";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import TablePengguna from "./components/tablePengguna";
 
 const data = [
@@ -53,6 +55,23 @@ const data = [
 
 export const DataPersertaAdmin = () => {
   const [loading, setLoading] = useState(false);
+  const [listUsers, setListUsers] = useState([]);
+
+  const getListUsers = () => {
+    const res = getUsers()
+      .then((res) => {
+        setListUsers(res);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error(err);
+      });
+  };
+
+  useEffect(() => {
+    getListUsers();
+  }, []);
 
   return (
     <AdminBasePage title="Data Pengguna">
@@ -60,7 +79,7 @@ export const DataPersertaAdmin = () => {
         <div className="px-5">
           <h1 className="font-bold text-xl mb-10">Kelola Akun</h1>
         </div>
-        <TablePengguna data={data} loading={loading} />
+        <TablePengguna data={listUsers} loading={loading} />
       </div>
     </AdminBasePage>
   );
