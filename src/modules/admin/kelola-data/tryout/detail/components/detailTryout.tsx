@@ -2,9 +2,10 @@ import { TryoutDetail } from "@/lib/interfaces/tryout";
 import { RxCalendar, RxClock } from "react-icons/rx";
 import { TbEdit } from "react-icons/tb";
 import moment from "moment";
+import Link from "next/link";
 
 export const DetailTryoutSectionOne = (props: any) => {
-  const { data } = props;
+  const { id, data } = props;
 
   return (
     <div className="bg-white rounded-xl p-5">
@@ -12,7 +13,9 @@ export const DetailTryoutSectionOne = (props: any) => {
         <div className="flex justify-between">
           <h2 className="text-lg font-bold">Pelaksanaan</h2>
           <div className="flex gap-3">
-            <button className="btn btn-primary">Edit</button>
+            <Link href={`${id}/edit`}>
+              <button className="btn btn-primary">Edit</button>
+            </Link>
             <button className="btn bg-danger border-none hover:bg-[#C30404]">
               Hapus
             </button>

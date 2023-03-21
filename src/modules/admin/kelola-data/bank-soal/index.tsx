@@ -11,8 +11,6 @@ export const KelolaDataBankSoal = () => {
   const [formTambah, setFormTambah] = useState({
     to_title: "",
     to_summary: "",
-    startsAt: "",
-    endsAt: "",
   });
 
   const getListBankSoal = () => {
@@ -23,20 +21,13 @@ export const KelolaDataBankSoal = () => {
 
   const handleTambahBankSoal = (e: any) => {
     e.preventDefault();
-    const res = postCreateBankSoal(
-      formTambah.to_title,
-      formTambah.to_summary,
-      formTambah.startsAt,
-      formTambah.endsAt
-    )
+    const res = postCreateBankSoal(formTambah.to_title, formTambah.to_summary)
       .then((res) => {
         toast.success("Bank Soal Berhasil Ditambahkan");
         setSubmit(!submit);
         setFormTambah({
           to_title: "",
           to_summary: "",
-          startsAt: "",
-          endsAt: "",
         });
       })
       .catch((err) => {
@@ -112,42 +103,6 @@ export const KelolaDataBankSoal = () => {
                   setFormTambah((prev) => ({
                     ...prev,
                     to_summary: e.target.value,
-                  }))
-                }
-                required
-                className="input input-bordered w-full"
-              />
-            </div>
-            <div className="form-control w-full">
-              <label className="label">
-                <span className="label-text">Tanggal Bank Soal</span>
-              </label>
-              <input
-                type="datetime-local"
-                placeholder="Type here"
-                value={formTambah.startsAt}
-                onChange={(e) =>
-                  setFormTambah((prev) => ({
-                    ...prev,
-                    startsAt: e.target.value,
-                  }))
-                }
-                required
-                className="input input-bordered w-full"
-              />
-            </div>
-            <div className="form-control w-full">
-              <label className="label">
-                <span className="label-text">Tanggal Berakhir</span>
-              </label>
-              <input
-                type="datetime-local"
-                placeholder="Type here"
-                value={formTambah.endsAt}
-                onChange={(e) =>
-                  setFormTambah((prev) => ({
-                    ...prev,
-                    endsAt: e.target.value,
                   }))
                 }
                 required

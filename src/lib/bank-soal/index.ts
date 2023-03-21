@@ -19,20 +19,13 @@ export const getBankSoal = async () => {
 };
 
 // POST
-export const postCreateBankSoal = async (
-  name: string,
-  summary: string,
-  startAt: string,
-  endAt: string
-) => {
+export const postCreateBankSoal = async (name: string, summary: string) => {
   const res = await axios.post(
     POST_CREATE_BANKSOAL,
     {
       to_title: name,
       to_slug: slugify(name),
       to_summary: summary,
-      startsAt: startAt,
-      endsAt: endAt,
     },
     {
       headers: {

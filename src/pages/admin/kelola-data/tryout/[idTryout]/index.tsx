@@ -31,7 +31,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 
   return {
-    props: { detailTryout, soalTryout }, // will be passed to the page component as props
+    props: { idTryout, detailTryout, soalTryout }, // will be passed to the page component as props
   };
 }
 

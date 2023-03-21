@@ -7,18 +7,20 @@ import { toast } from "react-hot-toast";
 import { FaPlus } from "react-icons/fa";
 import { DetailEditSectionOne } from "./components/detailEdit";
 import { QnAEditTryout } from "./components/qnaEdit";
+import { useRouter } from "next/router";
 
 export const EditDetailTryout = (props: any) => {
   const { idTryout, detailTryout, soalTryout } = props;
   const [detail, setDetail] = useState({});
   const [content, setContent] = useState<PostContentTryoutDetail>(soalTryout);
+  const router = useRouter();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const res = postContentTryout(idTryout, content)
       .then((res) => {
         toast.success("Berhasil Mengubah Data Tryout");
-        console.log(res);
+        router.replace("/admin/kelola-data/tryout/" + idTryout);
       })
       .catch((err) => {
         toast.error(err.message);

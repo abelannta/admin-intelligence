@@ -3,15 +3,25 @@ import { parseCookies, destroyCookie } from "nookies";
 import { useRouter } from "next/router";
 import fotoProfil from "@/public/assets/pepe.webp";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const UserNavbar = () => {
+  const [user, setUser] = useState<any>({});
   const cookies = parseCookies();
   const router = useRouter();
 
   const handleLogout = () => {
     destroyCookie(null, "accessToken");
+    destroyCookie(null, "userData");
     router.push("/auth/login");
   };
+
+  useEffect(() => {
+    if (cookies.userData) {
+      const userParse = JSON.parse(cookies.userData);
+      setUser(userParse);
+    }
+  }, []);
 
   return (
     <>
@@ -22,7 +32,7 @@ const UserNavbar = () => {
             className="flex items-center cursor-pointer btn btn-ghost capitalize"
           >
             <div className="hidden md:block">
-              <p className="text-base text-black">Admin</p>
+              <p className="text-base text-black">{user.user_name}</p>
             </div>
             <div className="rounded-full w-10 h-10 m-0 md:ml-3 overflow-hidden">
               <Image src={fotoProfil} />
