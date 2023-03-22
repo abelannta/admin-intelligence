@@ -1,7 +1,7 @@
 import { NumberRounded } from "@/modules/components/number";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
+import { typeList, mapelList } from "@/lib/tryout/type";
 
 const contentData = [
   {
@@ -18,11 +18,6 @@ const contentData = [
 
 export const DetailQnATryout = (props: any) => {
   const { data } = props;
-  const [formData, setFormData] = useState({
-    id_to: "",
-    start_date: "",
-    name_to: "",
-  });
   const [content, setContent] = useState(data);
 
   console.log(data);
@@ -36,6 +31,8 @@ export const DetailQnATryout = (props: any) => {
           questionValue={item.content}
           answersValue={item.answers}
           correctAns={item.correctAns}
+          typeValue={item.type}
+          mapelValue={item.mapel}
         />
       ))}
     </>
@@ -47,19 +44,58 @@ interface QnAFieldProps {
   questionValue: string;
   answersValue: string[];
   correctAns: string;
+  typeValue: number;
+  mapelValue: number;
 }
 
 const QnAField = (props: QnAFieldProps) => {
-  const { index, questionValue, answersValue, correctAns } = props;
+  const {
+    index,
+    questionValue,
+    answersValue,
+    correctAns,
+    typeValue,
+    mapelValue,
+  } = props;
+
+  const filterType = (type: number) => {
+    const filter = typeList
+      .filter((item) => item.id === type)
+      .map((item, i) => <p key={i}>{item.name}</p>);
+
+    return filter;
+  };
+
+  const filterMapel = (mapel: number) => {
+    const filter = mapelList
+      .filter((item) => item.id === mapel)
+      .map((item, i) => <p key={i}>{item.name}</p>);
+
+    return filter;
+  };
 
   return (
     <div className="bg-white p-5 rounded-xl mt-10">
+      <div className="flex justify-between">
+        <div className="flex flex-row items-center">
+          <NumberRounded number={index + 1} />
+          <h2 className="text-lg font-semibold">Soal</h2>
+        </div>
+        <div className="flex items-center gap-5">
+          <div className="badge badge-lg badge-secondary text-primary">
+            {filterType(typeValue)}
+          </div>
+          <div className="badge badge-lg badge-secondary text-primary">
+            {filterMapel(mapelValue)}
+          </div>
+          <button className="btn bg-gray-200 text-black hover:bg-slate-300 border-none mr-3">
+            <FaPlus className="w-3 h-3 mr-3" />
+            Pembahasan
+          </button>
+        </div>
+      </div>
       <div className="grid grid-cols-12 gap-5">
         <div className="col-span-6">
-          <div className="flex flex-row items-center">
-            <NumberRounded number={index + 1} />
-            <h2 className="text-lg font-semibold">Soal</h2>
-          </div>
           <div className="flex flex-row mt-5">
             <div className="invisible">
               <NumberRounded number={1} />
@@ -75,7 +111,7 @@ const QnAField = (props: QnAFieldProps) => {
         </div>
         <div className="col-span-6">
           <div className="flex flex-row-reverse"></div>
-          <div className="flex flex-col gap-5 mt-3">
+          <div className="flex flex-col gap-5 mt-5">
             {answersValue.map((item, i) => (
               <InputJawaban
                 questionIndex={index}

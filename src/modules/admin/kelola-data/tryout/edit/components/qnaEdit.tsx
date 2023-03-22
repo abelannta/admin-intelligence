@@ -206,6 +206,7 @@ const QnAField = (props: QnAFieldProps) => {
               rows={7}
               onChange={(e) => storingQuestion(index, e.target.value)}
               value={questionValue}
+              required
             ></textarea>
           </div>
         </div>

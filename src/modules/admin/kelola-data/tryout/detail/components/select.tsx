@@ -18,7 +18,7 @@ export const TipeSelect = (props: SelectProps) => {
         className="select select-bordered w-full max-w-xs"
         onChange={(e) => storingSelect(index, parseInt(e.target.value))}
         defaultValue={value}
-        required
+        disabled
       >
         <option value={0} disabled>
           Tipe
@@ -43,7 +43,7 @@ export const MapelSelect = (props: SelectProps) => {
         className="select select-bordered w-full max-w-xs"
         onChange={(e) => storingSelect(index, parseInt(e.target.value))}
         defaultValue={value}
-        required
+        disabled
       >
         <option value={0} disabled>
           Mapel
