@@ -7,6 +7,8 @@ import Link from "next/link";
 export const DetailTryoutSectionOne = (props: any) => {
   const { id, data } = props;
 
+  console.log(data);
+
   return (
     <div className="bg-white rounded-xl p-5">
       <div>
@@ -41,7 +43,9 @@ export const DetailTryoutSectionOne = (props: any) => {
           </div>
           <input
             type="number"
+            value={data?.duration}
             placeholder="Type here"
+            disabled
             className="input input-md input-bordered w-full max-w-xs col-span-6"
           />
         </div>

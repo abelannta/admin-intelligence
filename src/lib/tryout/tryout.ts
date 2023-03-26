@@ -29,6 +29,7 @@ export const getTryout = async () => {
 export const postCreateTryout = async (
   name: string,
   summary: string,
+  duration: number,
   startAt: string,
   endAt: string
 ) => {
@@ -38,6 +39,7 @@ export const postCreateTryout = async (
       to_title: name,
       to_slug: slugify(name),
       to_summary: summary,
+      duration: duration,
       startsAt: startAt,
       endsAt: endAt,
     },

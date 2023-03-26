@@ -19,13 +19,16 @@ export const EditDetailTryout = (props: any) => {
     e.preventDefault();
     const res = postContentTryout(idTryout, content)
       .then((res) => {
-        toast.success("Berhasil Mengubah Data Tryout");
         router.replace("/admin/kelola-data/tryout/" + idTryout);
       })
       .catch((err) => {
-        toast.error(err.message);
-        console.error(err);
+        throw err;
       });
+    toast.promise(res, {
+      loading: "Loading...",
+      success: "Berhasil Mengubah Data!",
+      error: "Gagal Mengubah Data!",
+    });
   };
 
   return (

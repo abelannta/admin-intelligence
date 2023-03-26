@@ -19,7 +19,7 @@ export const KelolaDataTryout = () => {
     to_summary: "",
     startsAt: "",
     endsAt: "",
-    duration: "",
+    duration: 0,
   });
   const getListTryout = () => {
     const res = getTryout()
@@ -34,6 +34,7 @@ export const KelolaDataTryout = () => {
     const res = postCreateTryout(
       formTambah.to_title,
       formTambah.to_summary,
+      formTambah.duration,
       formTambah.startsAt,
       formTambah.endsAt
     )
@@ -45,7 +46,7 @@ export const KelolaDataTryout = () => {
           to_summary: "",
           startsAt: "",
           endsAt: "",
-          duration: "",
+          duration: 0,
         });
       })
       .catch((err) => {
@@ -181,7 +182,7 @@ export const KelolaDataTryout = () => {
                 onChange={(e) =>
                   setFormTambah((prev) => ({
                     ...prev,
-                    duration: e.target.value,
+                    duration: parseInt(e.target.value),
                   }))
                 }
                 required

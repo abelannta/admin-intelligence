@@ -88,27 +88,22 @@ export const QnAEditTryout = (props: any) => {
   return (
     <>
       {content.map((item: any, i: number) => (
-        <>
-          <div
-            className={`${item.answers.length === 0 ? "hidden" : ""}`}
-            key={i}
-          >
-            <QnAField
-              index={i}
-              deleteQuestion={deleteQuestion}
-              storingQuestion={storingQuestion}
-              storingAnswer={storingAnswer}
-              storingType={storingType}
-              storingMapel={storingMapel}
-              typeValue={item.type}
-              mapelValue={item.mapel}
-              questionValue={item.content}
-              answersValue={item.answers}
-              correctAns={item.correctAns}
-              storingCorrectAnswer={storingCorrectAnswer}
-            />
-          </div>
-        </>
+        <div className={`${item.answers.length === 0 ? "hidden" : ""}`} key={i}>
+          <QnAField
+            index={i}
+            deleteQuestion={deleteQuestion}
+            storingQuestion={storingQuestion}
+            storingAnswer={storingAnswer}
+            storingType={storingType}
+            storingMapel={storingMapel}
+            typeValue={item.type}
+            mapelValue={item.mapel}
+            questionValue={item.content}
+            answersValue={item.answers}
+            correctAns={item.correctAns}
+            storingCorrectAnswer={storingCorrectAnswer}
+          />
+        </div>
       ))}
       <button
         onClick={(e) => addQuestion(e)}
