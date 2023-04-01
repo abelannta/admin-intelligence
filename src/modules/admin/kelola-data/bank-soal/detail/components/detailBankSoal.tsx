@@ -4,10 +4,8 @@ import { TbEdit } from "react-icons/tb";
 import moment from "moment";
 import Link from "next/link";
 
-export const DetailTryoutSectionOne = (props: any) => {
+export const DetailBankSoalSectionOne = (props: any) => {
   const { id, data } = props;
-
-  console.log(data);
 
   return (
     <div className="bg-white rounded-xl p-5">

@@ -58,7 +58,6 @@ export const postContentTryout = async (
   idTryout: string,
   data: PostContentTryoutDetail
 ) => {
-  console.log(data);
   const res = await axios.post(POST_TRYOUT + idTryout + "/soal", data, {
     headers: {
       Authorization: `Bearer ${token}`,

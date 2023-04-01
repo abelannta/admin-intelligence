@@ -15,4 +15,6 @@ export const DELETE_TRYOUT = BASE_URL_API + "tryouts/delete/";
 
 // Bank Soal
 export const GET_BANKSOAL = BASE_URL_API + "banksoal/";
+export const POST_BANKSOAL = GET_BANKSOAL;
 export const POST_CREATE_BANKSOAL = BASE_URL_API + "banksoal/create";
+export const DELETE_BANKSOAL = BASE_URL_API + "banksoal/delete/";

@@ -3,9 +3,11 @@ import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { typeList, mapelList } from "@/lib/tryout/type";
 
-export const DetailQnATryout = (props: any) => {
+export const DetailQnABankSoal = (props: any) => {
   const { data } = props;
   const [content, setContent] = useState(data);
+
+  console.log(data);
 
   return (
     <>

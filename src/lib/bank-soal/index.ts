@@ -1,7 +1,13 @@
 import axios from "axios";
-import { GET_BANKSOAL, POST_CREATE_BANKSOAL } from "../urlApi";
+import {
+  DELETE_BANKSOAL,
+  GET_BANKSOAL,
+  POST_BANKSOAL,
+  POST_CREATE_BANKSOAL,
+} from "../urlApi";
 import { parseCookies } from "nookies";
 import slugify from "react-slugify";
+import { PostContentTryoutDetail } from "../interfaces/tryout";
 
 const cookies = parseCookies();
 const token = cookies.accessToken;
@@ -23,9 +29,10 @@ export const postCreateBankSoal = async (name: string, summary: string) => {
   const res = await axios.post(
     POST_CREATE_BANKSOAL,
     {
-      to_title: name,
-      to_slug: slugify(name),
-      to_summary: summary,
+      bs_title: name,
+      bs_slug: slugify(name),
+      bs_summary: summary,
+      endsAt: "2023-05-30T10:32:00+00:00",
     },
     {
       headers: {
@@ -34,4 +41,28 @@ export const postCreateBankSoal = async (name: string, summary: string) => {
       },
     }
   );
+};
+
+export const postContentBankSoal = async (
+  idBankSoal: string,
+  data: PostContentTryoutDetail
+) => {
+  const res = await axios.post(POST_BANKSOAL + idBankSoal + "/soal", data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  return res.data;
+};
+
+export const deleteBankSoal = async (bs_slug: string) => {
+  const res = await axios.delete(DELETE_BANKSOAL + bs_slug, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.data;
 };

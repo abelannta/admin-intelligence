@@ -1,29 +1,12 @@
-import { TryoutDetail } from "@/lib/interfaces/tryout";
+import moment from "moment";
 import { RxCalendar, RxClock } from "react-icons/rx";
 import { TbEdit } from "react-icons/tb";
-import moment from "moment";
-import Link from "next/link";
 
-export const DetailTryoutSectionOne = (props: any) => {
+export const DetailEditBankSoal = (props: any) => {
   const { id, data } = props;
-
-  console.log(data);
 
   return (
     <div className="bg-white rounded-xl p-5">
-      <div>
-        <div className="flex justify-between">
-          <h2 className="text-lg font-bold">Pelaksanaan</h2>
-          <div className="flex gap-3">
-            <Link href={`${id}/edit`}>
-              <button className="btn btn-primary">Edit</button>
-            </Link>
-            <button className="btn bg-danger border-none hover:bg-[#C30404]">
-              Hapus
-            </button>
-          </div>
-        </div>
-      </div>
       <div>
         <h2 className="text-lg font-bold mt-5">Detail</h2>
         <div className="grid grid-cols-12 mt-3 items-center">
@@ -34,7 +17,6 @@ export const DetailTryoutSectionOne = (props: any) => {
           <input
             type="text"
             value={data?.bs_title}
-            disabled
             placeholder="Type here"
             className="input input-md input-bordered w-full max-w-xs col-span-6"
           />
