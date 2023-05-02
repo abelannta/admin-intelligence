@@ -1,7 +1,7 @@
 export const BASE_URL_API = "https://nineint-api.herokuapp.com/";
 
 // Authentication
-export const POST_AUTH_LOGIN = BASE_URL_API + "users/login";
+export const POST_AUTH_LOGIN = BASE_URL_API + "admin/login";
 export const GET_PROFILE = BASE_URL_API + "users/profile";
 
 // Users

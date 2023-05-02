@@ -1,4 +1,4 @@
-import { PostContentTryoutDetail } from "@/lib/interfaces/tryout";
+import { PostContentBankSoalDetail } from "@/lib/interfaces/bankSoal";
 import { postContentTryout } from "@/lib/tryout/tryout";
 import AdminBasePage from "@/modules/basePage";
 import { NumberRounded } from "@/modules/components/number";
@@ -13,7 +13,8 @@ import { postContentBankSoal } from "@/lib/bank-soal";
 export const EditDetailBankSoal = (props: any) => {
   const { idBankSoal, detailBankSoal, soalBankSoal } = props;
   const [detail, setDetail] = useState({});
-  const [content, setContent] = useState<PostContentTryoutDetail>(soalBankSoal);
+  const [content, setContent] =
+    useState<PostContentBankSoalDetail>(soalBankSoal);
   const router = useRouter();
 
   const handleSubmit = (e: any) => {

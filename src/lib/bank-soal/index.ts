@@ -47,6 +47,7 @@ export const postContentBankSoal = async (
   idBankSoal: string,
   data: PostContentTryoutDetail
 ) => {
+  console.log(data);
   const res = await axios.post(POST_BANKSOAL + idBankSoal + "/soal", data, {
     headers: {
       Authorization: `Bearer ${token}`,

@@ -6,7 +6,7 @@ export interface BankSoalDetail {
   bs_title: string;
 }
 
-export interface PostContentTryoutDetail {
+export interface PostContentBankSoalDetail {
   type: number;
   mapel: number;
   content: string;
