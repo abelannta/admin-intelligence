@@ -141,7 +141,6 @@ export const KelolaDataTryout = () => {
                 type="datetime-local"
                 placeholder="Type here"
                 value={formTambah.startsAt}
-                min={recentDate}
                 onChange={(e) =>
                   setFormTambah((prev) => ({
                     ...prev,
