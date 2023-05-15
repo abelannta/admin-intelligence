@@ -35,8 +35,8 @@ export const KelolaDataTryout = () => {
       formTambah.to_title,
       formTambah.to_summary,
       formTambah.duration,
-      formTambah.startsAt,
-      formTambah.endsAt
+      moment(formTambah.startsAt).format(),
+      moment(formTambah.endsAt).format()
     )
       .then((res) => {
         toast.success("Tryout Berhasil Ditambahkan");
@@ -50,7 +50,6 @@ export const KelolaDataTryout = () => {
         });
       })
       .catch((err) => {
-        console.error(err);
         toast.error(err.message);
       });
   };
