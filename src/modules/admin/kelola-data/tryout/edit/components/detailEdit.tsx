@@ -12,11 +12,25 @@ export const DetailEditSectionOne = (props: any) => {
         <div className="grid grid-cols-12 mt-3 items-center">
           <div className="col-span-2 flex flex-row">
             <RxCalendar className="w-5 h-5 mr-3" />
-            <div className="text-base font-semibold">Tanggal</div>
+            <div className="text-base font-semibold">Waktu Mulai</div>
           </div>
           <input
             type="datetime-local"
             value={moment(data?.startsAt).format("yyyy-MM-DDThh:mm")}
+            disabled
+            placeholder="Type here"
+            className="input input-md input-bordered w-full max-w-xs col-span-6"
+          />
+        </div>
+        <div className="grid grid-cols-12 mt-3 items-center">
+          <div className="col-span-2 flex flex-row">
+            <RxCalendar className="w-5 h-5 mr-3" />
+            <div className="text-base font-semibold">Waktu Berakhir</div>
+          </div>
+          <input
+            type="datetime-local"
+            value={moment(data?.endsAt).format("yyyy-MM-DDThh:mm")}
+            disabled
             placeholder="Type here"
             className="input input-md input-bordered w-full max-w-xs col-span-6"
           />
@@ -29,6 +43,8 @@ export const DetailEditSectionOne = (props: any) => {
           <input
             type="number"
             placeholder="Type here"
+            value={data?.duration}
+            disabled
             className="input input-md input-bordered w-full max-w-xs col-span-6"
           />
         </div>
@@ -42,6 +58,7 @@ export const DetailEditSectionOne = (props: any) => {
           </div>
           <input
             type="text"
+            disabled
             value={data?.to_title}
             placeholder="Type here"
             className="input input-md input-bordered w-full max-w-xs col-span-6"
